@@ -1,5 +1,45 @@
 # Python OOP Journey 🚀
 
+This repository documents my end-to-end learning journey of Object-Oriented Programming (OOP) in Python.
+
+## What this repo covers
+- Core OOP concepts (classes, objects, methods)
+- Encapsulation, Inheritance, Polymorphism, Abstraction
+- Static methods vs Class methods
+- Advanced Python OOP features
+- Design patterns
+- Mini real-world projects
+
+## Why this repo exists
+- To build strong OOP fundamentals
+- To create interview-ready examples
+- To demonstrate structured Python knowledge on GitHub
+
+## How to use
+Each folder represents a focused OOP concept with clean, runnable examples.
+
+## Tech Stack
+- Python 3.x
+
+## Status
+🚧 Actively maintained and updated
+
+
+S## Repository Structure
+
+```text
+python-oops-journey/
+├── 01_basics/
+├── 02_encapsulation/
+├── 03_inheritance/
+├── 04_polymorphism/
+├── 05_abstraction/
+├── 06_advanced_oop/
+├── 07_design_patterns/
+├── 08_mini_projects/
+└── README.md
+```
+
 # Phase 01: OOP Basics in Python
 
 ## Objective
@@ -57,3 +97,4 @@ Each file is independently executable.
 
 ```bash
 python <filename>.py
+
