@@ -25,7 +25,7 @@ Each folder represents a focused OOP concept with clean, runnable examples.
 🚧 Actively maintained and updated
 
 
-## Repository Structure
+S## Repository Structure
 
 ```text
 python-oops-journey/
