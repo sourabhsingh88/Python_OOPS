@@ -38,7 +38,7 @@ python-oops-journey/
 ├── 07_design_patterns/
 ├── 08_mini_projects/
 └── README.md
-
+```
 
 # Phase 01: OOP Basics in Python
 
