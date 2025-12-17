@@ -79,6 +79,7 @@ if __name__ == "__main__":
     car2 = ElectricCar()
     car2.start()
     car2.stop()
+```
 
 ## Why Abstraction Matters
 
