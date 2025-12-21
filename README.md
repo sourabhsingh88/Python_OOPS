@@ -31,9 +31,9 @@ S## Repository Structure
 python-oops-journey/
 ├── 01_basics/
 ├── 02_encapsulation/
-├── 03_inheritance/
-├── 04_polymorphism/
-├── 05_abstraction/
+├── 03_abstraction/
+├── 04_inheritance/
+├── 05_polymorphism/
 ├── 06_advanced_oop/
 ├── 07_design_patterns/
 ├── 08_mini_projects/
