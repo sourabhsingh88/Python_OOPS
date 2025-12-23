@@ -1,4 +1,4 @@
-# Python OOP Journey 🚀
+# My Python OOP Journey 🚀
 
 This repository documents my end-to-end learning journey of Object-Oriented Programming (OOP) in Python.
 
