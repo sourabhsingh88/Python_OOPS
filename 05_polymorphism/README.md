@@ -63,24 +63,28 @@ v2.fuel_type()
 - That is polymorphism.
 ### 2. Operator Overloading (Compile Time Polymorphim)
 - Operators can be redefined for user-defined objects using magic methods.
-
+- Python does **NOT** support compile-time polymorphism.
+## This means:
+- You **cannot** create multiple functions or methods with the same name and different parameters.
+- Python does **not** decide which method to call at compile time.
+- The **last defined function** with a given name overwrites previous ones.
 Example
 ```python
 
-class Salary:
-    def __init__(self, amount):
-        self.amount = amount
+class Demo:
+    def add(self, a, b):
+        return a + b
 
-    def __add__(self, other):
-        return self.amount + other.amount
+    # This overwrites the previous method
+    def add(self, a, b, c):
+        return a + b + c
 
-s1 = Salary(40000)
-s2 = Salary(25000)
 
-print(s1 + s2)
+d = Demo()
+print(d.add(1, 2, 3))   # ✅ Works
+# print(d.add(1, 2))   # ❌ TypeError: missing argument
 
-# Output
-# 65000
+
 
 ```
 - Operators are just syntactic sugar for methods.
