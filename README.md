@@ -98,7 +98,7 @@ Each file is independently executable.
 ```bash
 python <filename>.py
 ```
-#### Phase 02: Abstraction in Python
+# Phase 02: Abstraction in Python
 
 ## Objective
 This phase focuses on **Abstraction**, one of the core pillars of Object-Oriented Programming (OOP).
@@ -248,7 +248,7 @@ Each file can be run independently:
 python <filename>.py
 ```
 
-### 🛡️ Phase 03: Encapsulation in Python
+# 🛡️ Phase 03: Encapsulation in Python
 
 ## 🎯 Objective
 This phase focuses on **Encapsulation**, a core pillar of Object-Oriented Programming (OOP). You will learn how Python protects internal object states, controls data access, and enforces business rules to ensure objects remain robust and cannot be misused by external code.
@@ -405,3 +405,331 @@ Each file can be run independently:
 ```bash
 python <filename>.py
 ```
+
+# Phase 4 – Inheritance (Python OOP)
+
+## Overview
+
+Inheritance is a core Object-Oriented Programming (OOP) concept that allows a class
+(child / subclass) to reuse and extend the behavior of another class
+(parent / superclass).
+
+It establishes an **IS-A relationship** between classes and enables:
+- Code reuse
+- Logical hierarchy
+- Method overriding
+- Polymorphism
+
+---
+
+## Key Terminology
+
+| Term        | Meaning |
+|-------------|--------|
+| Parent Class | The class being inherited from |
+| Child Class  | The class that inherits |
+| `super()`    | Used to access parent class methods/constructor |
+| IS-A         | Relationship created by inheritance |
+
+Example:
+- `Car` → Parent
+- `Fortuner` → Child  
+- `Fortuner IS A Car`
+
+---
+
+## Basic Syntax
+
+```python
+class Parent:
+    pass
+
+class Child(Parent):
+    pass
+```
+
+### Real-World Example
+
+```python
+# Parent Class: Car
+class Car:
+    def __init__(self, fuel_type):
+        self.fuel_type = fuel_type
+
+    def start(self):
+        print(self.fuel_type, "car started")
+
+    def stop(self):
+        print(self.fuel_type, "car stopped")
+
+# Child Class: Fortuner
+class Fortuner(Car):
+    def __init__(self, model, fuel_type):
+        super().__init__(fuel_type)   # initialize parent
+        self.model = model
+        self.start()                  # inherited method
+
+    def offroad(self):
+        print(self.model, "model", self.fuel_type, "car on off-road")
+
+# Object Creation
+c1 = Fortuner(2018, "Petrol")
+c1.offroad()
+
+# Output
+# Petrol car started
+# 2018 model Petrol car on off-road
+```
+
+### super() Keyword
+
+## super() is used to:
+
+- Call parent class constructor
+
+- call parent class methods
+
+- Without super(), parent initialization will not occur.
+```python
+super().__init__("FuelType - not in a string")
+super().start()
+```
+
+Types of Inheritance in Python
+1. Single Inheritance
+```python
+
+class A:
+    pass
+
+class B(A):
+    pass
+
+```
+
+2. Multilevel Inheritance
+```python
+class A:
+    pass
+
+class B(A):
+    pass
+
+class C(B):
+    pass
+```
+
+3. Multiple Inheritance
+```python
+
+class A:
+    pass
+
+class B:
+    pass
+
+class C(A, B):
+    pass
+
+```
+
+### Method Overriding (Polymorphism)
+
+- Child class can redefine parent behavior.
+
+```python
+
+class Car:
+    def start(self):
+        print("Car started")
+
+class ElectricCar(Car):
+    def start(self):
+        print("Electric car started silently")
+
+```
+
+#### Phase 5 – Polymorphism (OOP in Python)
+
+## Objective
+Establish a clear understanding of **polymorphism** and implement it to build flexible, scalable, and maintainable Python applications.  
+This phase focuses on runtime behavior variation without changing the calling code.
+
+---
+
+## What Is Polymorphism?
+**Polymorphism means one interface, multiple behaviors.**
+
+In Python, the same method name can execute different logic depending on the object type at runtime.
+
+Bottom line:  
+You write generic code. Python handles the specialization.
+
+---
+
+## Why Polymorphism Is Non-Negotiable
+From a system design perspective:
+- Eliminates rigid `if-else` chains
+- Improves extensibility (Open–Closed Principle)
+- Reduces coupling between components
+- Enables clean inheritance-based design
+
+If your codebase lacks polymorphism, it will not scale.
+
+---
+
+## Types of Polymorphism in Python
+
+---
+
+### 1. Method Overriding (Runtime Polymorphism)
+A child class provides its own implementation of a parent class method.
+
+#### Rules
+- Same method name
+- Same parameters
+- Decision happens at runtime
+
+#### Example
+```python
+class Vehicle:
+    def fuel_type(self):
+        print("Generic fuel")
+
+class Car(Vehicle):
+    def fuel_type(self):
+        print("Petrol or Diesel")
+
+class ElectricCar(Vehicle):
+    def fuel_type(self):
+        print("Electric")
+
+v1 = Car()
+v2 = ElectricCar()
+
+v1.fuel_type()
+v2.fuel_type()
+ ```
+- Same method call. Different execution.
+- That is polymorphism.
+### 2. Operator Overloading (Compile Time Polymorphim)
+- Operators can be redefined for user-defined objects using magic methods.
+- Python does **NOT** support compile-time polymorphism.
+## This means:
+- You **cannot** create multiple functions or methods with the same name and different parameters.
+- Python does **not** decide which method to call at compile time.
+- The **last defined function** with a given name overwrites previous ones.
+Example
+```python
+
+class Demo:
+    def add(self, a, b):
+        return a + b
+
+    # This overwrites the previous method
+    def add(self, a, b, c):
+        return a + b + c
+
+
+d = Demo()
+print(d.add(1, 2, 3))   # ✅ Works
+# print(d.add(1, 2))   # ❌ TypeError: missing argument
+
+
+
+```
+- Operators are just syntactic sugar for methods.
+### 4. Polymorphism Using Inheritance
+
+- Parent references can point to child objects.
+
+Example
+```python
+
+class Shape:
+    def area(self):
+        pass
+
+class Rectangle(Shape):
+    def area(self):
+        return "Rectangle Area"
+
+class Circle(Shape):
+    def area(self):
+        return "Circle Area"
+
+shapes = [Rectangle(), Circle()]
+
+for shape in shapes:
+    print(shape.area())
+
+
+# Output
+# 
+# Rectangle Area
+# Circle Area
+
+
+```
+- This is how real-world frameworks are designed.
+
+### Key Interview Takeaways
+1. Does Python support method overloading?
+
+No.
+Python does not support compile-time method overloading.
+It supports runtime method overriding.
+
+## Overloading vs Overriding
+
+| Aspect              | Method Overloading                         | Method Overriding                          |
+|---------------------|--------------------------------------------|--------------------------------------------|
+| Definition          | Same method name with different parameters | Child class redefines parent class method |
+| Binding Time        | Compile-time                               | Runtime                                    |
+| Python Support      | ❌ Not supported natively                  | ✅ Fully supported                          |
+| Inheritance Needed  | ❌ Not required                            | ✅ Mandatory                                |
+| Method Signature    | Same name, different arguments             | Same name, same arguments                  |
+| Polymorphism Type   | Compile-time polymorphism                  | Runtime polymorphism                       |
+| Usage Scenario      | Languages like Java, C++                   | Core OOP mechanism in Python               |
+| Real-world Usage    | Static method resolution                   | Dynamic behavior selection                 |
+
+
+## What Is Runtime Polymorphism?
+
+Method resolution happens during execution based on the object type, not the reference type.
+
+## Common Anti-Patterns
+
+- Using if-elif instead of overriding
+
+- Not maintaining method signatures
+
+- Mixing responsibilities in parent classes
+
+- Calling parent logic unnecessarily
+
+- These are design failures, not syntax issues.
+
+### When to Use Polymorphism
+
+- Payment gateways
+
+- Notification systems
+
+- Strategy-based logic
+
+- Role-based access systems
+
+- Shape / Vehicle / Product hierarchies
+
+## If behavior changes but interface stays constant, polymorphism is mandatory.
+
+### Phase 5 Summary
+
+- Polymorphism enables dynamic behavior
+
+- Method overriding is the core mechanism
+
+- Reduces code duplication
+
+- Critical for scalable and clean architecture
