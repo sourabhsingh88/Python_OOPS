@@ -3,11 +3,10 @@ from core.config import get_db
 from sqlalchemy.orm import Session
 from schemas.manufacturer import ManufacturerCreate, ManufacturerResponse
 from schemas.product import ProductCreate, ProductResponse
-
 from services.manufacturer_service import ManufacturerService
 from services.product_service import ProductService
 
-router =  APIRouter(prefix="/product" , tags=["|| Product ||"])
+router =  APIRouter(prefix="/manufacturer" , tags=["|| Manufacturer ||"])
 
 @router.get("/")
 def get_inventory() :
@@ -15,17 +14,17 @@ def get_inventory() :
 
 
 @router.post(
-    "/products",
-    response_model=ProductResponse,
+    "/manufacturers",
+    response_model=ManufacturerResponse,
     status_code=status.HTTP_201_CREATED
 )
-def create_product(
-    payload: ProductCreate,
+def create_manufacturer(
+    payload: ManufacturerCreate,
     db: Session = Depends(get_db)
 ):
-    service = ProductService()
+    service = ManufacturerService()
     try:
-        return service.create_product(db, payload)
+        return service.create_manufacturer(db, payload)
     except ValueError as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
@@ -34,9 +33,9 @@ def create_product(
 
 
 @router.get(
-    "/products",
-    response_model=list[ProductResponse]
+    "/manufacturers",
+    response_model=list[ManufacturerResponse]
 )
-def list_products(db: Session = Depends(get_db)):
-    service = ProductService()
-    return service.get_all_products(db)
+def list_manufacturers(db: Session = Depends(get_db)):
+    service = ManufacturerService()
+    return service.get_all_manufacturers(db)

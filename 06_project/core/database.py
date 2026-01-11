@@ -10,18 +10,18 @@ engine = create_engine(
     db_url ,
     connect_args={"check_same_thread" : False}
 )
-sessionLocal = sessionmaker(
+SessionLocal = sessionmaker(
     autoflush = False ,
     autocommit = False,
     bind = engine
 )
 Base = declarative_base()
 
-
-def get_db() :
-    db =  sessionLocal()
-    try :
-        yield db
-    finally:
-        db.close()
+#
+# def get_db() :
+#     db =  SessionLocal()
+#     try :
+#         yield db
+#     finally:
+#         db.close()
 
