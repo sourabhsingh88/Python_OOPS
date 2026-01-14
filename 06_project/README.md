@@ -1,4 +1,4 @@
-# Phase 6 git
+# Phase 6 Mini Project 
 app/
  ├── main.py
  ├── models/
