@@ -20,12 +20,12 @@ def get_inventory() :
     status_code=status.HTTP_201_CREATED
 )
 def create_product(
-    payload: ProductCreate,
+    product: ProductCreate,
     db: Session = Depends(get_db)
 ):
     service = ProductService()
     try:
-        return service.create_product(db, payload)
+        return service.create_product(db, product)
     except ValueError as e:
         raise HTTPException(
             status_code=status.HTTP_400_BAD_REQUEST,
